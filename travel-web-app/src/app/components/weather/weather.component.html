@@ -1,0 +1,14 @@
+<div class="weather-widget-container mat-elevation-z8" *ngIf="!isDismissed">
+    <button class="dismiss-button" (click)="dismissWidget()">x</button>
+    <div class="weather-info">
+        <mat-icon class="weather-icon">thermostat</mat-icon>
+        <span>{{ weather?.temperature }}°C</span>
+    </div>
+    <div class="weather-info">
+        <mat-icon class="weather-icon">water_drop</mat-icon>
+        <span>{{ weather?.humidity | percent }}</span>
+    </div>
+    <div class="weather-description">
+        <span>{{ weather?.description }}</span>
+    </div>
+</div>

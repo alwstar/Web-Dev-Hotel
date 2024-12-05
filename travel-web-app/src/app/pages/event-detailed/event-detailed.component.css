@@ -1,0 +1,51 @@
+.event-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-height: calc(100vh - 104px);
+    /* Set maximum height */
+    overflow: hidden;
+    /* Prevent overflow outside the container */
+}
+
+.event-detail {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+
+    /* Remove scrollbar */
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+
+    /* WebKit (Chrome, Safari, etc.) */
+    &::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar */
+    }
+}
+
+.event-not-found {
+    text-align: center;
+    color: red;
+}
+
+.event-card {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #FBECD0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-card mat-card-header {
+    background-color: #FBECD0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}

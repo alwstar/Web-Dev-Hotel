@@ -1,0 +1,13 @@
+<div class="events-container">
+    <div *ngFor="let event of events" class="event-card" (click)="navigateTo(event.id)">
+      <mat-card class="custom-card">
+        <mat-card-header>
+          <mat-card-title>{{ event.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="event.image_url" alt="Event Image">
+        <mat-card-content>
+          <p>{{ event.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

@@ -1,0 +1,20 @@
+<mat-toolbar class="toolbar mat-elevation-z8">
+  <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" class="logo-link">
+    <img src="logo.png" alt="HHZ Travels Logo" class="logo">
+  </a>
+  <span>HHZ Travels</span>
+  <nav>
+    <a mat-stroked-button color="primary" routerLink="/events" routerLinkActive="active"
+      ariaCurrentWhenActive="page"><mat-icon>
+        event</mat-icon>
+      Events</a>
+    <a mat-stroked-button color="primary" routerLink="/rooms" routerLinkActive="active"
+      ariaCurrentWhenActive="page"><mat-icon>hotel</mat-icon>
+      Rooms</a>
+    <a mat-stroked-button color="primary" routerLink="/media" routerLinkActive="active"
+      ariaCurrentWhenActive="page"><mat-icon>perm_media</mat-icon>
+      Media</a>
+  </nav>
+</mat-toolbar>
+<router-outlet></router-outlet>
+<app-weather class="weather-widget"></app-weather>

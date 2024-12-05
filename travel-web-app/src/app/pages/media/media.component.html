@@ -1,0 +1,20 @@
+<div class="media-container">
+    <div *ngFor="let eventImage of media.eventImages" class="media-card">
+      <mat-card class="custom-card">
+        <img mat-card-image [src]="eventImage.image_url" alt="Event Image">
+      </mat-card>
+    </div>
+    <div *ngFor="let roomImage of media.roomImages" class="media-card">
+      <mat-card class="custom-card">
+        <img mat-card-image [src]="roomImage.image_url" alt="Room Image">
+      </mat-card>
+    </div>
+    <div *ngFor="let youtubeLink of media.videos" class="media-card">
+      <mat-card class="custom-card">
+        <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(youtubeLink.image_url)"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </mat-card>
+    </div>
+  </div>

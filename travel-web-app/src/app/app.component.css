@@ -1,0 +1,38 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FBECD0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    /* Adjust the height to fit your design */
+    width: auto;
+}
+
+span {
+    margin-right: auto;
+    margin-left: 16px;
+    /* Adjust as needed to space out the logo from the navigation links */
+}
+
+.weather-widget {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+  }

@@ -1,0 +1,50 @@
+services:
+  mysql-db-orders:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_TCP_PORT: 3310
+    ports:
+    - 3310:3310
+    expose:
+      - 3310
+    volumes:
+      - mysql-data-orders:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  node-app-orders:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_HOST: mysql-db-orders
+      DB_PORT: 3310
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: mydatabase
+      PORT: 3050
+    restart: always
+    ports:
+      - "3050:3050"
+    depends_on:
+      mysql-db-orders:
+        condition: service_healthy
+    networks:
+      - mynetwork
+
+volumes:
+  mysql-data-orders:
+
+networks:
+  mynetwork:
+    driver: bridge

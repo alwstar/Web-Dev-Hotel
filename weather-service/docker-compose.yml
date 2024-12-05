@@ -1,0 +1,50 @@
+services:
+  mysql-db-weather:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_TCP_PORT: 3309
+    ports:
+    - 3309:3309
+    expose:
+      - 3309
+    volumes:
+      - mysql-data-weather:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  node-app-weather:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PORT: 3003
+      DB_HOST: mysql-db-weather
+      DB_PORT: 3309
+      DB_USER: root
+      DB_NAME: mydatabase
+      DB_PASSWORD: password
+    restart: always
+    ports:
+      - "3003:3003"
+    depends_on:
+      mysql-db-weather:
+        condition: service_healthy
+    networks:
+      - mynetwork
+
+volumes:
+  mysql-data-weather:
+
+networks:
+  mynetwork:
+    driver: bridge

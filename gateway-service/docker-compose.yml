@@ -1,0 +1,17 @@
+services:
+  node-app-weather:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PORT: 3004
+    restart: always
+    ports:
+      - "3004:3004"
+    # depends_on:
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

@@ -1,0 +1,12 @@
+.home-container {
+    height: calc(100vh - 64px); /* Full viewport height */
+    background-image: url('/home_bg.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensure the image covers the entire container */
+    background-position: center; /* Center the image */
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: flex-end; /* Align items to the bottom */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  }
+  

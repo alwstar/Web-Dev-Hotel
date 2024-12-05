@@ -1,0 +1,13 @@
+<div class="rooms-container">
+    <div *ngFor="let room of rooms" class="room-card" (click)="navigateTo(room.id)">
+      <mat-card class="custom-card">
+        <mat-card-header>
+          <mat-card-title>{{ room.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="room.image_url" alt="Room Image">
+        <mat-card-content>
+          <p>{{ room.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

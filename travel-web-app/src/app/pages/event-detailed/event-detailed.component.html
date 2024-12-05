@@ -1,0 +1,26 @@
+<div class="event-detail-container">
+    <div *ngIf="!event" class="event-not-found">
+      <h1>event not found</h1>
+    </div>
+    <div *ngIf="event" class="event-detail">
+      <mat-card class="event-card">
+        <mat-card-header>
+          <mat-card-title>{{ event.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="event.image_url" alt="event Image">
+        <mat-card-content>
+          <p>{{ event.description }}</p>
+          <p>{{ eventDate | date:'dd.MM.yyyy, EEEE' }}</p>
+          <p>Price: {{ event.price| currency }}</p>
+          <div>
+            <button mat-raised-button color="accent" (click)="openOrderDialog()" [disabled]="!isEventAvailable">
+              <mat-icon>shopping_cart</mat-icon>
+              Book Now
+            </button>
+            <span *ngIf="!isEventAvailable">No tickets available</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
